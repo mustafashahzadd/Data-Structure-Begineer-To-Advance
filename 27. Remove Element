@@ -1,5 +1,7 @@
 Link : https://leetcode.com/problems/remove-element/description/
 
+Code In Python
+
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
         count =0
