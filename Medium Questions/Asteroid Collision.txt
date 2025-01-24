@@ -1,0 +1,45 @@
+Link to the Question: 
+  https://leetcode.com/problems/asteroid-collision/
+
+
+class Solution:
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
+        st=[]
+        for val in asteroids:
+            if val > 0:
+                st.append(val)
+            else:
+                while len(st) > 0 and abs(val) > st[-1] and st[-1] > 0:
+                    st.pop()
+                if len(st) == 0 or st[-1] <0:
+                    st.append(val)
+                if len(st)> 0 and st[-1] == abs(val):
+                    st.pop()
+        return st
+        
+
+Time Complexity: O(n)
+
+Space Complexity: O(n)
+
+
+Explanation:
+   
+1. Asteroids Moving in the Same Direction:
+
+If all asteroids are moving in the same direction (all positive or all negative), they are simply added to the stack without collision.
+
+2. Collisions Between Opposite Directions:
+
+-> When a negative asteroid (val < 0) is encountered:
+It may collide with positive asteroids (already in the stack).
+
+-> The collision resolution depends on the absolute values:
+
+i. If the negative asteroid is larger in absolute value, the positive asteroid at the top of the stack (st[-1]) is popped.
+ii. If the negative asteroid is smaller in absolute value, it is ignored, and the positive asteroid remains in the stack.
+iii. If the negative asteroid is equal in absolute value, both are destroyed (i.e., the top of the stack is popped, and the negative asteroid is not added).
+
+3. Edge Case for an Empty Stack:
+
+If the stack is empty and a negative asteroid is encountered, it is simply added to the stack since there is no possibility of collision.
