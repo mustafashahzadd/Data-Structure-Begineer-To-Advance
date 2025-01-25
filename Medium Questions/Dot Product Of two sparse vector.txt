@@ -1,0 +1,32 @@
+Link to the Question: https://leetcode.com/problems/dot-product-of-two-sparse-vectors/
+
+class SparseVector:
+    def __init__(self,nums):
+        self.array = nums
+    
+    def dotProduct(self,vec):
+        result=0
+        for num1,num2 in zip(self.array , vec.array):
+            result+=num1 * num2
+        return result
+
+Time Complexity : O(n)
+Space Complexity: O(1)
+
+Explanation:
+1. def init(self, nums):
+
+-> This is a constructor method, automatically called when an object of the class is created.
+nums is the input list (or array) passed during object creation.
+
+-> Self refers to the current instance of the class (every object of the class has its own self).
+						self.array = nums
+
+-> Assigns the input nums (list or array) to the instance variable self.array.
+
+2. zip(self.array, vec.array):
+
+The zip function pairs elements from self.array and vec.array into tuples.
+
+**Example:**
+If self.array = [1, 0, 2] and vec.array = [2, 3, 4], zip(self.array, vec.array) will generate:
